@@ -311,10 +311,10 @@
     </div>
   </div>
 
-  <!-- NHẠC NỀN -->
-  <audio id="bg-music" loop preload="auto">
-    <source src="https://open.spotify.com/track/40SRhE8DQ8hXRFHYhegF9b?si=dc323cf797824792" type="audio/mpeg">
-  </audio>
+<!-- NHÚNG SPOTIFY PLAYER -->
+  <div id="spotify-player" style="position: fixed; bottom: 20px; left: 20px; z-index: 999; opacity: 0.85; transition: opacity 0.3s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.85'">
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4L2K3P32ew3213?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+  </div>
 
   <div id="canvas-container"></div>
 
