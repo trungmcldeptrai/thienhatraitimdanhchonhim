@@ -94,90 +94,6 @@
       box-shadow: 0 0 45px rgba(255, 0, 128, 0.9);
     }
 
-    /* NÚT CẤU HÌNH TOGGLE */
-    #toggle-panel-btn {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      z-index: 101;
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(10px);
-      color: #fff;
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      cursor: pointer;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 1.2rem;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    }
-    #toggle-panel-btn:hover {
-      background: rgba(255, 0, 128, 0.4);
-      transform: rotate(45deg);
-    }
-
-    /* BẢNG ĐIỀU KHIỂN TÙY CHỈNH */
-    #control-panel {
-      position: fixed;
-      top: 75px;
-      right: 20px;
-      z-index: 100;
-      background: rgba(15, 5, 25, 0.7);
-      border: 1px solid rgba(255, 105, 180, 0.25);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      padding: 20px;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-      width: 250px;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      transform: translateX(0);
-      opacity: 1;
-    }
-    #control-panel.collapsed {
-      transform: translateX(280px);
-      opacity: 0;
-      pointer-events: none;
-    }
-    .control-group {
-      margin-bottom: 15px;
-    }
-    .control-group:last-child {
-      margin-bottom: 0;
-    }
-    .control-group label {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.78rem;
-      color: #ff99dd;
-      margin-bottom: 8px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    .control-group input[type="color"] {
-      width: 100%;
-      height: 36px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      background: rgba(255, 255, 255, 0.05);
-      padding: 2px;
-    }
-    .control-group input[type="range"] {
-      width: 100%;
-      height: 6px;
-      border-radius: 3px;
-      cursor: pointer;
-      accent-color: #ff007f;
-      background: rgba(255, 255, 255, 0.1);
-    }
-
     #canvas-container {
       width: 100%;
       height: 100%;
@@ -279,25 +195,6 @@
     </div>
   </div>
 
-  <!-- NÚT TOGGLE BẢNG ĐIỀU KHIỂN -->
-  <button id="toggle-panel-btn" onclick="togglePanel()" title="Tùy chỉnh">⚙️</button>
-
-  <!-- BẢNG ĐIỀU KHIỂN -->
-  <div id="control-panel">
-    <div class="control-group">
-      <label>Trái tim trung tâm</label>
-      <input type="color" id="heartColorPicker" value="#ff0066" oninput="updateHeartColor(this.value)">
-    </div>
-    <div class="control-group">
-      <label>Trái tim bay</label>
-      <input type="color" id="floatingColorPicker" value="#ff3399" oninput="updateFloatingColor(this.value)">
-    </div>
-    <div class="control-group">
-      <label>Cường độ ánh sáng</label>
-      <input type="range" id="contrastSlider" min="0.5" max="2.0" step="0.1" value="1.0" oninput="updateContrast(this.value)">
-    </div>
-  </div>
-
   <!-- MODAL LỜI CHÚC -->
   <div id="wish-modal">
     <div class="wish-card">
@@ -311,53 +208,54 @@
     </div>
   </div>
 
-<!-- WIDGET PHÁT NHẠC XINHSANH -->
-<div id="music-widget" style="position: fixed; bottom: 20px; left: 20px; z-index: 9999; display: flex; align-items: center; gap: 12px; background: rgba(15, 15, 25, 0.75); backdrop-filter: blur(10px); border: 1px solid rgba(255, 105, 180, 0.3); padding: 10px 16px; border-radius: 50px; box-shadow: 0 8px 32px 0 rgba(255, 105, 180, 0.2); transition: all 0.3s ease;">
-  <div style="width: 36px; height: 36px; background: linear-gradient(135deg, #ff758c, #ff7eb3); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 0 10px rgba(255,120,180,0.5);" onclick="toggleMusic()">
-    <span id="music-icon" style="color: white; font-size: 14px;">▶</span>
+  <!-- WIDGET PHÁT NHẠC XINHSANH -->
+  <div id="music-widget" style="position: fixed; bottom: 20px; left: 20px; z-index: 9999; display: flex; align-items: center; gap: 12px; background: rgba(15, 15, 25, 0.75); backdrop-filter: blur(10px); border: 1px solid rgba(255, 105, 180, 0.3); padding: 10px 16px; border-radius: 50px; box-shadow: 0 8px 32px 0 rgba(255, 105, 180, 0.2); transition: all 0.3s ease;">
+    <div style="width: 36px; height: 36px; background: linear-gradient(135deg, #ff758c, #ff7eb3); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 0 10px rgba(255,120,180,0.5);" onclick="toggleMusic()">
+      <span id="music-icon" style="color: white; font-size: 14px;">▶</span>
+    </div>
+    <div style="display: flex; flex-direction: column;">
+      <span style="color: #fff; font-size: 13px; font-weight: bold; font-family: sans-serif; letter-spacing: 0.5px;">Flower Day 🌸</span>
+      <span id="music-status" style="color: #ffb6c1; font-size: 11px; font-family: sans-serif;">Chạm vào màn hình để phát</span>
+    </div>
   </div>
-  <div style="display: flex; flex-direction: column;">
-    <span style="color: #fff; font-size: 13px; font-weight: bold; font-family: sans-serif; letter-spacing: 0.5px;">Flower Day 🌸</span>
-    <span id="music-status" style="color: #ffb6c1; font-size: 11px; font-family: sans-serif;">Chạm vào màn hình để phát</span>
-  </div>
-</div>
 
-<!-- FILE NHẠC -->
-<audio id="bg-music" loop preload="auto">
-  <source src="flowerday.mp3" type="audio/mpeg">
-</audio>
+  <!-- FILE NHẠC -->
+  <audio id="bg-music" loop preload="auto">
+    <source src="flowerday.mp3" type="audio/mpeg">
+  </audio>
 
-<script>
-  var audio = document.getElementById("bg-music");
-  var icon = document.getElementById("music-icon");
-  var statusText = document.getElementById("music-status");
+  <script>
+    var audio = document.getElementById("bg-music");
+    var icon = document.getElementById("music-icon");
+    var statusText = document.getElementById("music-status");
 
-  // Hàm phát/dừng nhạc khi bấm vào widget
-  function toggleMusic() {
-    if (audio.paused) {
-      audio.play();
-      icon.innerHTML = "❚❚";
-      statusText.innerHTML = "Đang phát...";
-    } else {
-      audio.pause();
-      icon.innerHTML = "▶";
-      statusText.innerHTML = "Đã tạm dừng";
+    // Hàm phát/dừng nhạc khi bấm vào widget
+    function toggleMusic() {
+      if (audio.paused) {
+        audio.play();
+        icon.innerHTML = "❚❚";
+        statusText.innerHTML = "Đang phát...";
+      } else {
+        audio.pause();
+        icon.innerHTML = "▶";
+        statusText.innerHTML = "Đã tạm dừng";
+      }
     }
-  }
 
-  // Tự động phát khi chạm/click lần đầu tiên vào web
-  function autoPlayOnInteraction() {
-    audio.play().then(() => {
-      icon.innerHTML = "❚❚";
-      statusText.innerHTML = "Đang phát...";
-    }).catch((err) => {
-      console.log("Chờ tương tác người dùng:", err);
-    });
-  }
+    // Tự động phát khi chạm/click lần đầu tiên vào web
+    function autoPlayOnInteraction() {
+      audio.play().then(() => {
+        icon.innerHTML = "❚❚";
+        statusText.innerHTML = "Đang phát...";
+      }).catch((err) => {
+        console.log("Chờ tương tác người dùng:", err);
+      });
+    }
 
-  document.addEventListener("click", autoPlayOnInteraction, { once: true });
-  document.addEventListener("touchstart", autoPlayOnInteraction, { once: true });
-</script>
+    document.addEventListener("click", autoPlayOnInteraction, { once: true });
+    document.addEventListener("touchstart", autoPlayOnInteraction, { once: true });
+  </script>
+
   <div id="canvas-container"></div>
 
   <script>
@@ -383,10 +281,6 @@
         text: "Happy Birthday! Chúc nhím có một ngày sinh nhật thật ấm áp bên người thân yêu, luôn xinh đẹp và may mắn. Tớ yêu cậu><!."
       }
     ];
-
-    function togglePanel() {
-      document.getElementById('control-panel').classList.toggle('collapsed');
-    }
 
     function startExperience() {
       document.getElementById('landing-screen').classList.add('hidden');
@@ -500,17 +394,6 @@
       yoyo: true,
       ease: "power2.inOut"
     });
-
-    function updateHeartColor(hex) {
-      const color = new THREE.Color(hex);
-      const colors = heartGeo.attributes.color.array;
-      for (let i = 0; i < heartCount; i++) {
-        colors[i * 3] = color.r;
-        colors[i * 3 + 1] = color.g;
-        colors[i * 3 + 2] = color.b;
-      }
-      heartGeo.attributes.color.needsUpdate = true;
-    }
 
     // 4. VÒNG TINH TÚ XOAY QUANH TRÁI TIM (SATURN RING EFFECT)
     const ringCount = 3500;
@@ -652,8 +535,6 @@
 
     // Tương tác chạm/click
     window.addEventListener('pointerdown', (e) => {
-      if(e.target.closest('#control-panel') || e.target.closest('#toggle-panel-btn')) return;
-      
       mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
       mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
 
@@ -711,17 +592,6 @@
 
     const floatingPoints = new THREE.Points(floatingGeo, floatingMat);
     scene.add(floatingPoints);
-
-    function updateFloatingColor(hex) {
-      floatingMat.map = createHeartTexture(hex);
-      floatingMat.needsUpdate = true;
-    }
-
-    function updateContrast(val) {
-      heartMat.size = 0.042 * val;
-      galaxyMat.size = 0.032 * val;
-      floatingMat.opacity = Math.min(1.0, 0.6 * val);
-    }
 
     // 8. CHỮ 3D VÒNG QUANH SỬ DỤNG CANVAS TEXT
     function createTextSprite(text) {
