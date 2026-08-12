@@ -311,11 +311,53 @@
     </div>
   </div>
 
-<!-- NHÚNG SPOTIFY PLAYER (FLOWER) -->
-  <div id="spotify-player" style="position: fixed; bottom: 15px; left: 15px; z-index: 999; width: 300px; max-width: 80vw; opacity: 0.9; transition: all 0.3s ease;">
-    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/40SRhE8DQ8hXRFHYhegF9b?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+<!-- WIDGET PHÁT NHẠC XINHSANH -->
+<div id="music-widget" style="position: fixed; bottom: 20px; left: 20px; z-index: 9999; display: flex; align-items: center; gap: 12px; background: rgba(15, 15, 25, 0.75); backdrop-filter: blur(10px); border: 1px solid rgba(255, 105, 180, 0.3); padding: 10px 16px; border-radius: 50px; box-shadow: 0 8px 32px 0 rgba(255, 105, 180, 0.2); transition: all 0.3s ease;">
+  <div style="width: 36px; height: 36px; background: linear-gradient(135deg, #ff758c, #ff7eb3); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 0 10px rgba(255,120,180,0.5);" onclick="toggleMusic()">
+    <span id="music-icon" style="color: white; font-size: 14px;">▶</span>
   </div>
+  <div style="display: flex; flex-direction: column;">
+    <span style="color: #fff; font-size: 13px; font-weight: bold; font-family: sans-serif; letter-spacing: 0.5px;">Flower Day 🌸</span>
+    <span id="music-status" style="color: #ffb6c1; font-size: 11px; font-family: sans-serif;">Chạm vào màn hình để phát</span>
+  </div>
+</div>
 
+<!-- FILE NHẠC -->
+<audio id="bg-music" loop preload="auto">
+  <source src="flowerday.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  var audio = document.getElementById("bg-music");
+  var icon = document.getElementById("music-icon");
+  var statusText = document.getElementById("music-status");
+
+  // Hàm phát/dừng nhạc khi bấm vào widget
+  function toggleMusic() {
+    if (audio.paused) {
+      audio.play();
+      icon.innerHTML = "❚❚";
+      statusText.innerHTML = "Đang phát...";
+    } else {
+      audio.pause();
+      icon.innerHTML = "▶";
+      statusText.innerHTML = "Đã tạm dừng";
+    }
+  }
+
+  // Tự động phát khi chạm/click lần đầu tiên vào web
+  function autoPlayOnInteraction() {
+    audio.play().then(() => {
+      icon.innerHTML = "❚❚";
+      statusText.innerHTML = "Đang phát...";
+    }).catch((err) => {
+      console.log("Chờ tương tác người dùng:", err);
+    });
+  }
+
+  document.addEventListener("click", autoPlayOnInteraction, { once: true });
+  document.addEventListener("touchstart", autoPlayOnInteraction, { once: true });
+</script>
   <div id="canvas-container"></div>
 
   <script>
